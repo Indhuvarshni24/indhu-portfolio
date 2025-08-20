@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Indhu Varshni M S — UI/UX Designer & Developer</title>
+  <meta name="description" content="Portfolio of Indhu Varshni M S — UI/UX Designer & Developer. Projects in UI/UX, React, Firebase, AR/VR and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b0f14;
+      --card: #111821;
+      --text: #e8eef6;
+      --muted: #9fb2c7;
+      --brand: #66e3ff;
+      --accent: #8b5cf6;
+      --ring: rgba(102, 227, 255, 0.25);
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius-xl: 20px;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 10px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;scroll-behavior:smooth}
+    a{color:var(--brand);text-decoration:none}
+    .wrapper{max-width:1100px;margin:0 auto;padding:24px}
+    .nav{position:sticky;top:0;z-index:10;background:linear-gradient(180deg, rgba(11,15,20,0.9) 0%, rgba(11,15,20,0.6) 100%);backdrop-filter: blur(8px);border-bottom:1px solid rgba(255,255,255,0.06)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1100px;margin:0 auto;padding:12px 24px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-logo{width:36px;height:36px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--accent));box-shadow:var(--shadow)}
+    .brand h1{font-size:18px;margin:0}
+    .nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    .nav a{color:var(--text);opacity:.9;font-weight:500}
+    .btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#1a2532,#0f1722);border:1px solid rgba(255,255,255,0.08);padding:10px 14px;border-radius:12px;color:var(--text);font-weight:600;box-shadow:var(--shadow)}
+    .btn:hover{border-color:rgba(102,227,255,0.35);box-shadow:0 8px 24px var(--ring)}
+    .hero{display:grid;grid-template-columns:1.3fr .7fr;gap:28px;align-items:center;padding:40px 24px 12px;max-width:1100px;margin:0 auto}
+    .card{background:linear-gradient(180deg, #0f151d 0%, #0d141b 100%);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-xl);box-shadow:var(--shadow)}
+    .hero .intro{padding:28px;border-radius:var(--radius-xl);position:relative;overflow:hidden}
+    .badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);font-size:12px;color:var(--muted)}
+    .title{font-size:40px;line-height:1.1;margin:16px 0 10px}
+    .subtitle{font-size:18px;color:var(--muted);margin:0 0 18px}
+    .chiprow{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 20px}
+    .chip{font-size:12px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.08);background:rgba(102,227,255,0.06);color:#cfefff}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+    .hero .side{padding:28px;display:grid;gap:16px}
+    .stat{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:center;padding:14px;border-radius:14px;border:1px dashed rgba(255,255,255,0.08)}
+    .section{max-width:1100px;margin:30px auto;padding:0 24px}
+    .grid{display:grid;gap:18px}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    @media (max-width: 920px){.hero{grid-template-columns:1fr}.grid-3{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width: 640px){.grid-3,.grid-2{grid-template-columns:1fr}.title{font-size:32px}}
+    .card h3{margin:0 0 8px;font-size:18px}
+    .muted{color:var(--muted);font-size:14px}
+    .proj{padding:18px;border-radius:16px;position:relative;overflow:hidden}
+    .proj h3{font-size:18px;margin:6px 0 6px}
+    .proj .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+    .tag{font-size:11px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,0.08);color:#d8e7ff;background:rgba(139,92,246,0.1)}
+    .list{padding:18px;border-radius:16px}
+    .list ul{margin:8px 0 0 18px;color:var(--muted)}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:10px}
+    @media (max-width:800px){.kpis{grid-template-columns:repeat(2,1fr)}}
+    .kpi{padding:14px;border-radius:14px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02)}
+    .kpi h4{margin:0;font-size:22px}
+    .footer{max-width:1100px;margin:40px auto 60px;padding:0 24px;display:grid;gap:12px}
+    .socials{display:flex;gap:12px;flex-wrap:wrap}
+    .pill{padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,0.08);display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.02)}
+    .small{font-size:12px;color:var(--muted)}
+    .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);margin:20px 0}
+    .glow{position:absolute;inset:-40% -10% auto auto;width:420px;height:420px;background:radial-gradient(closest-side, rgba(102,227,255,0.18), transparent 70%);filter:blur(24px);pointer-events:none}
+    .resume-link{font-weight:600}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">
+          <!-- simple IV monogram -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M6 4v16M18 4l-6 16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h1>Indhu Varshni • Portfolio</h1>
+      </div>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#certs">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      
+    </div>
+  </nav>
+
+  <header class="hero">
+    <section class="intro card">
+      <div class="glow"></div>
+      <span class="badge">UI/UX • Front‑End • Full‑Stack Learner</span>
+      <h2 class="title">Hi, I’m <span style="background:linear-gradient(135deg,var(--brand),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;">Indhu Varshni M S</span></h2>
+      <p class="subtitle">
+        Aspiring Software Developer passionate about building delightful, accessible experiences.
+        Skilled in UI/UX, React, Firebase, with interests in AR/VR and Game Design.
+      </p>
+      <div class="chiprow">
+        <span class="chip">Figma</span>
+        <span class="chip">Wireframing</span>
+        <span class="chip">Prototyping</span>
+        <span class="chip">React</span>
+        <span class="chip">Firebase</span>
+        <span class="chip">C / Java / Python / C#</span>
+        <span class="chip">MongoDB</span>
+      </div>
+      <div class="cta">
+        <a class="btn" href="https://www.linkedin.com/in/indhu-varshni-m-s-094385191" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/Indhuvarshni24" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn resume-link" href="#contact">Get My Resume</a>
+      </div>
+    </section>
+
+    <aside class="side card">
+      <div class="stat">
+        <strong>Degree</strong><span class="muted">B.E. Computer Science and Design (2022–2026)</span>
+      </div>
+      <div class="stat">
+        <strong>College</strong><span class="muted">Kongu Engineering College, Erode</span>
+      </div>
+      <div class="stat">
+        <strong>Languages</strong><span class="muted">Tamil, English</span>
+      </div>
+      <div class="stat">
+        <strong>Location</strong><span class="muted">Erode, Tamil Nadu, India</span>
+      </div>
+      <div class="stat">
+        <strong>Interests</strong><span class="muted">UI/UX, Web Dev, Game Design, AR/VR</span>
+      </div>
+    </aside>
+  </header>
+
+  <main>
+    <section id="about" class="section">
+      <div class="grid grid-2">
+        <div class="card list">
+          <h3>About Me</h3>
+          <p class="muted">
+            I enjoy converting ideas into interactive products through design thinking and solid engineering.
+            I focus on clarity, consistency, and usability—crafting experiences that feel effortless.
+          </p>
+          <div class="kpis">
+            <div class="kpi"><h4>8.34 CGPA</h4><div class="small">up to 5th sem</div></div>
+            <div class="kpi"><h4>93.7%</h4><div class="small">Class 12 (2022)</div></div>
+            <div class="kpi"><h4>93.6%</h4><div class="small">Class 10 (2020)</div></div>
+            <div class="kpi"><h4>+10</h4><div class="small">Events & Workshops</div></div>
+          </div>
+        </div>
+        <div class="card list">
+          <h3>Area of Interest</h3>
+          <ul>
+            <li>UI/UX — Figma, Wireframes, Interactive Prototypes</li>
+            <li>Web Development — React, Firebase</li>
+            <li>Programming — C, Java, Python, C#</li>
+            <li>Game Designing and AR/VR</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <h2 class="title" style="font-size:28px">Skills</h2>
+      <div class="grid grid-3">
+        <div class="card list">
+          <h3>Design</h3>
+          <ul>
+            <li>Figma (Auto‑layout, Components, Variants)</li>
+            <li>User Flows, Wireframes, Prototypes</li>
+            <li>Usability & Accessibility basics</li>
+          </ul>
+        </div>
+        <div class="card list">
+          <h3>Development</h3>
+          <ul>
+            <li>HTML, CSS, JavaScript, React</li>
+            <li>Firebase (Auth, Firestore, Hosting)</li>
+            <li>MongoDB basics</li>
+          </ul>
+        </div>
+        <div class="card list">
+          <h3>Programming</h3>
+          <ul>
+            <li>C, Java, Python, C#</li>
+            <li>Problem Solving & Data Structures</li>
+            <li>Version Control (Git/GitHub)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2 class="title" style="font-size:28px">Projects</h2>
+      <div class="grid grid-3">
+        <article class="proj card">
+          <h3>E‑Resale App</h3>
+          <p class="muted">Mobile app UI for buying/selling used electrical items with simple listing flow and clean browsing experience.</p>
+          <div class="tags">
+            <span class="tag">Figma</span><span class="tag">Wireframes</span><span class="tag">Prototype</span>
+          </div>
+        </article>
+        <article class="proj card">
+          <h3>Language Learning Website</h3>
+          <p class="muted">Interactive website with role‑play scenarios, flashcards, and games to make learning engaging.</p>
+          <div class="tags">
+            <span class="tag">React</span><span class="tag">Firebase</span><span class="tag">UI/UX</span>
+          </div>
+        </article>
+        <article class="proj card">
+          <h3>Drain Cover Cleaner</h3>
+          <p class="muted">Vacuum‑based device to remove sink waste and store it in removable bags for easy disposal.</p>
+          <div class="tags">
+            <span class="tag">Hardware</span><span class="tag">Ideation</span><span class="tag">Prototype</span>
+          </div>
+        </article>
+        <article class="proj card">
+          <h3>SMT Tours & Travels Website (Ongoing)</h3>
+          <p class="muted">Consultancy project to showcase packages and enable inquiries for a travel business.</p>
+          <div class="tags">
+            <span class="tag">React</span><span class="tag">UI Design</span>
+          </div>
+        </article>
+        <article class="proj card">
+          <h3>IoT Fire Detection System</h3>
+          <p class="muted">Basic IoT solution for detecting fire incidents and alerting quickly.</p>
+          <div class="tags">
+            <span class="tag">IoT</span><span class="tag">Prototyping</span>
+          </div>
+        </article>
+        <article class="proj card">
+          <h3>DBMS: Food Ordering System</h3>
+          <p class="muted">Mini‑project creating a relational database schema and queries for ordering workflows.</p>
+          <div class="tags">
+            <span class="tag">SQL</span><span class="tag">ER Model</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="achievements" class="section">
+      <h2 class="title" style="font-size:28px">Achievements & Activities</h2>
+      <div class="grid grid-2">
+        <div class="card list">
+          <ul>
+            <li>2nd place — CSD Ideathon (Drain Cover Cleaner)</li>
+            <li>3rd place — Digital Delight (UI/UX) Competition</li>
+            <li>Level‑1 Hackathon participant (UI/UX)</li>
+            <li>Presented projects/papers: VR in Construction, Cyber Security, Butterfly Effect</li>
+          </ul>
+        </div>
+        <div class="card list">
+          <ul>
+            <li>Active member — Computer Society of India (CSI)</li>
+            <li>Member — Mobile Application Development Club & Citizen Consumer Club</li>
+            <li>Volunteer — CSD Association Club</li>
+            <li>Workshops — AWS, Figma (KEC)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="certs" class="section">
+      <h2 class="title" style="font-size:28px">Certifications</h2>
+      <div class="grid grid-3">
+        <div class="card list">
+          <h3>Creator of Metaverse</h3>
+          <p class="muted">AICTE & Meta — Virtual and Augmented Reality</p>
+        </div>
+        <div class="card list">
+          <h3>Programming in C#</h3>
+          <p class="muted">Fundamentals of C# programming</p>
+        </div>
+        <div class="card list">
+          <h3>MongoDB Node.js Developer</h3>
+          <p class="muted">Basics of building with MongoDB and Node.js</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2 class="title" style="font-size:28px">Contact</h2>
+      <div class="grid grid-2">
+        <div class="card list">
+          <p><strong>Email:</strong> <a href="mailto:indhuvarshnims@gmail.com">indhuvarshnims@gmail.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+916383904424">+91 63839 04424</a></p>
+          <p><strong>LinkedIn:</strong> <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/indhu-varshni-m-s-094385191">linkedin.com/in/indhu-varshni-m-s-094385191</a></p>
+          <p><strong>GitHub:</strong> <a target="_blank" rel="noopener" href="https://github.com/Indhuvarshni24">github.com/Indhuvarshni24</a></p>
+        </div>
+        <div class="card list">
+          <h3>Download Resume</h3>
+          <p class="muted">One‑page resume attached in your chat. You can also attach a PDF file here when deploying.</p>
+          <a class="btn" href="indhu_resume.pdf" download>Download PDF</a>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <p class="small">© <span id="year"></span> Indhu Varshni M S • Built with ❤️</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="socials">
+      <span class="pill">B.E. — Computer Science and Design (2026)</span>
+      <a class="pill" href="mailto:indhuvarshnims@gmail.com">Email Me</a>
+      <a class="pill" target="_blank" rel="noopener" href="https://github.com/Indhuvarshni24">GitHub</a>
+      <a class="pill" target="_blank" rel="noopener" href="https://www.linkedin.com/in/indhu-varshni-m-s-094385191">LinkedIn</a>
+    </div>
+    <p class="small">Kongu Engineering College • Erode, Tamil Nadu, India</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
